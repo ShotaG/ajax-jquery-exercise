@@ -55,7 +55,9 @@ $.ajax({
 	var unit = '&units=imperial';
 
 	$('#getData').on('click', function() {
-		var $city = $('userInput').val();
+		// preventing form's default action or trying to reload the page on click/submit
+		event.preventDefault()
+		var $city = $('#userInput').val();
 		console.log('click');
 		$.ajax({
 			type: 'GET', 
@@ -63,7 +65,8 @@ $.ajax({
 	//if success, do a function because you're gonna probably gonna do something
 			success: function(response) {
 				console.log(response);
-				console.log(responseText);
+				//responseText is undefined
+				//console.log(responseText);
 		//console.log('Current temperature in ' + $city + ' is ' + response.main.temp);
 			},
 			error: function(response) {
